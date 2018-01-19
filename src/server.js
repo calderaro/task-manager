@@ -9,7 +9,7 @@ import html from './helpers/html'
 const log = console.log
 const title = 'Task Manager'
 const NODE_ENV = process.env.NODE_ENV || 'development'
-const target = process.env.target || 'development'
+const TARGET = process.env.TARGET || 'development'
 const PORT = process.env.port || 3012
 
 const app = express()
@@ -26,7 +26,7 @@ if (NODE_ENV === 'production') {
   const render = require('./helpers/render').default
   const rootReducer = require('./reducers/').default
   const ctrls = require('./controllers/').default
-  const routes = require(`../build/${target}/routes`).default
+  const routes = require(`../build/${TARGET}/routes`).default
 
   app
     .use(render(routes, rootReducer, html))
@@ -49,7 +49,7 @@ if (NODE_ENV === 'production') {
 }
 
 server.listen(PORT, () =>
-    log(chalk.green(`Listening at port ${PORT} in ${NODE_ENV} mode targeting ${target}`)))
+    log(chalk.green(`Listening at port ${PORT} in ${NODE_ENV} mode targeting ${TARGET}`)))
 
 process.on('uncaughtException', err =>
   err.code === 'EADDRINUSE' ? log(chalk.red(`Port ${PORT} in use`)) : log(chalk.red(err.code)))

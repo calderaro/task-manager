@@ -25,7 +25,7 @@ var client = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-        'target': JSON.stringify('production'),
+        'TARGET': JSON.stringify('production'),
         'targetenv': JSON.stringify('browser'),
         'api': JSON.stringify(api)
       }
@@ -67,7 +67,7 @@ var server = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-        'target': JSON.stringify('production'),
+        'TARGET': JSON.stringify('production'),
         'targetenv': JSON.stringify('server'),
         'api': JSON.stringify(api)
       }

@@ -1,7 +1,7 @@
 import {renderToString} from 'react-dom/server'
 import serialize from 'serialize-javascript'
 
-const prefix = `/static/${process.env.target || 'development'}/`
+const prefix = `/static/${process.env.TARGET || 'development'}/`
 const main = prefix + 'main.js'
 
 const productionHeaderDependencies = `
