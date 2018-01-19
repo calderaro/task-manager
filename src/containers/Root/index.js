@@ -1,5 +1,5 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 import history from '../../helpers/history'
 import {Router, Route, Switch} from 'react-router-dom'
 import routes from './routes'

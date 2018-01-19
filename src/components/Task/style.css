@@ -1,0 +1,37 @@
+.task {
+  transition: opacity .4s ease, margin .4s ease, height .3s ease .4s, border .3s ease .4s;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  height: 3em;
+  animation-duration: .4s;
+  animation-name: lol;
+
+  & > div {
+    padding: 1em;
+  }
+  button {
+    padding: 1em;
+  }
+}
+
+@keyframes lol {
+  from {
+    opacity: 0;
+    margin: 0 0 0 .5em;
+  }
+  to {
+    opacity: 1;
+    margin: 0;
+  }
+}
+
+.deletedTask {
+  composes: task;
+  transition: opacity .4s ease, margin .4s ease, height .3s ease .4s, border .3s ease .4s;
+  margin: 0 0 0 .5em;
+  opacity: 0;
+  height: 0;
+  border: 0;
+}

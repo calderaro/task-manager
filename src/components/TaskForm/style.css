@@ -1,0 +1,35 @@
+.taskForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: red;
+
+  input[type="text"] {
+    font-size: 1em;
+    display: block;
+    height: 3em;
+    padding: 0 .5em;
+    width: 6em;
+    &:first-child {
+      width: 100%;
+    }
+  }
+  button {
+    font-size: 1em;
+    height: 3em;
+  }
+
+  & > select {
+    font-size: 1em;
+    width: 10em;
+    height: 3em;
+    appearance: none !important;
+    border-radius: 0;
+    border: 0;
+    text-align: center !important;
+    padding: 0 auto;
+    background: #FFF;
+    text-align-last:center;
+  }
+}

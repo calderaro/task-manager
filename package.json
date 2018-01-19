@@ -40,7 +40,8 @@
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "morgan": "^1.9.0",
-    "serialize-javascript": "^1.4.0"
+    "serialize-javascript": "^1.4.0",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
