@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import general from './general'
 import auth from './auth'
-import reproductor from './reproductor'
+import tasks from './tasks'
 
 const rootReducer = combineReducers({
   general,
   auth,
-  reproductor
+  tasks
 })
 
 export default rootReducer
