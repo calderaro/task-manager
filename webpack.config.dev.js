@@ -19,7 +19,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
         'TARGET': JSON.stringify('development'),
-        'targetenv': JSON.stringify('browser'),
+        'TARGETENV': JSON.stringify('browser'),
         'api': JSON.stringify(api)
       }
     })

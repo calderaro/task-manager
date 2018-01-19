@@ -26,7 +26,7 @@ var client = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
         'TARGET': JSON.stringify('production'),
-        'targetenv': JSON.stringify('browser'),
+        'TARGETENV': JSON.stringify('browser'),
         'api': JSON.stringify(api)
       }
     }),
@@ -68,7 +68,7 @@ var server = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
         'TARGET': JSON.stringify('production'),
-        'targetenv': JSON.stringify('server'),
+        'TARGETENV': JSON.stringify('server'),
         'api': JSON.stringify(api)
       }
     })
