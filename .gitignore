@@ -57,3 +57,12 @@ typings/
 # dotenv environment variables file
 .env
 
+
+# hide build files
+build
+static/production/
+static/sandbox/
+
+# IDE
+.idea/
+.vscode/
