@@ -3,7 +3,7 @@
   top: -300px;
   z-index: 99;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
   transition: all .6s ease;
 }
 .headerOut {
@@ -20,20 +20,14 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0 1em;
-    img {
-      height: 1.8vw;
-    }
+    width: 100%;
+
     a, button {
-      text-decoration: none;
+      font-size: 1.4em;
+      padding: 1em;
+      display: block;
       color: #FFF;
       text-decoration: none;
-      padding: 1.2em .6em;
-      text-transform: uppercase;
-      font-size: 1.2vw;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
     }
   }
   & > div:last-child {
@@ -46,15 +40,11 @@
       height: 1.8vw;
     }
     a, button {
+      padding: 1em;
+      font-size: 1.4em;
+      display: block;
       color: #FFF;
       text-decoration: none;
-      padding: 1.2em .6em;
-      text-transform: uppercase;
-      font-size: 1.2vw;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
     }
   }
   a:hover, a:focus {
