@@ -1,0 +1,64 @@
+.taskList {
+  overflow: hidden;
+  border-radius: .4em;
+  width: 75%;
+  margin: 0 auto;
+  @media (max-width: 900px) {
+    width: 100% !important;
+    border-radius: 0;
+  }
+}
+
+.taskListHeader {
+  background: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+
+  & > div:nth-child(1) {
+    width: 100%;
+    padding: 0 0 0 1em;
+  }
+  & > div:nth-child(2) {
+    width: 10%;
+    min-width: 100px;
+    text-align: center;
+  }
+  & > div:nth-child(3) {
+    width: 13%;
+    min-width: 100px;
+  }
+}
+
+.newTaskBtn {
+  background: #FFF;
+  display: block;
+  width: 100%;
+  font-size: 1.5em;
+  padding: .5em 0;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  color: #aaa;
+  cursor: pointer;
+  &:hover {
+    background: #FAFAFA;
+  }
+}
+
+.emptyEl {
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em 0;
+  i {
+    font-size: 6em;
+    color: #999;
+  }
+  div {
+    color: #888;
+  }
+}
