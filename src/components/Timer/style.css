@@ -1,0 +1,29 @@
+.timer {
+  background: #2ECCFA;
+  width: 100%;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9em;
+  padding: .3em 0 .1em 0;
+  color: #FFF;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 3em 0;
+  button {
+    color: #FFF;
+    font-size: 1.5em;
+    padding: .3em 4em;
+    background: none;
+    border: 1px solid #FFF;
+    border-radius: .2em;
+    cursor: pointer;
+  }
+}
