@@ -1,7 +1,10 @@
+
 const initialState = {
   defaultDurations: [1800000, 2700000, 3600000],
   timeUnits: ['mins', 'secs'],
   timeUnit: 'mins',
+  dragging: null,
+  draggingOver: null,
   data: {
     id: '',
     duration: '1800000',
@@ -53,6 +56,23 @@ export default function auth (state = initialState, action) {
       return {
         ...state,
         data: action.data
+      }
+    case 'tasksSetDrag':
+      return {
+        ...state,
+        dragging: action.task,
+        draggingOver: action.task ? state.draggingOver : null
+      }
+    case 'setDraggingOverTask':
+      return {
+        ...state,
+        draggingOver: action.task
+      }
+    case 'tasksReorder':
+      const arr = state.list.filter(i => i.id !== action.task.id)
+      return {
+        ...state,
+        list: [...arr.slice(0, action.index), action.task, ...arr.slice(action.index)]
       }
     default:
       return state
