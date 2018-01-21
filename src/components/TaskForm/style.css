@@ -1,24 +1,22 @@
-.taskForm {
+.taskFormContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  background: red;
+  align-items: flex-start;
+}
 
-  input[type="text"] {
-    font-size: 1em;
-    display: block;
-    height: 3em;
-    padding: 0 .5em;
-    width: 6em;
-    &:first-child {
-      width: 100%;
-    }
-  }
-  button {
-    font-size: 1em;
-    height: 3em;
-  }
+.taskForm {
+  width: 50%;
+  border: 1px solid #ddd;
+  padding: 0 0 2em 0;
+  background: #FFF;
+  border-radius: .5em;
+  margin-top: 10%;
 
   & > select {
     font-size: 1em;
@@ -32,4 +30,88 @@
     background: #FFF;
     text-align-last:center;
   }
+  @media (max-width: 900px) {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+.header {
+  width: 100%;
+  text-align: right;
+  i {
+    font-size: 1.5em;
+    color: red;
+    padding: .5em;
+    cursor: pointer;
+  }
+}
+.title {
+  font-size: 1em;
+  display: block;
+  height: 3em;
+  padding: 0 .5em;
+  width: 6em;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  width: calc(100% - 3em);
+  margin: 0 auto;
+  &:first-child {
+    width: 100%;
+  }
+}
+
+.durations {
+  padding: 1em;
+  & > div:first-child {
+    text-align: center;
+  }
+  & > div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    button {
+      font-size: 1em;
+      height: 3em;
+      border: 1px solid #ddd;
+      border-radius: .3em;
+      margin: 0 .2em;
+      min-width: 60px;
+    }
+    select {
+      margin: 0 .2em;
+    }
+  }
+  @media (max-width: 900px) {
+    & > div:last-child {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.duration {
+  font-size: 1em;
+  display: block;
+  height: 3em;
+  padding: 0 .5em;
+  margin: 0 .2em;
+  width: 6em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  &:first-child {
+    width: 100%;
+  }
+}
+
+.button {
+  font-size: 1.2em;
+  padding: .4em 2em;
+  border-radius: 5px;
+  color: #999;
+  display: block;
+  margin: 0 auto;
 }

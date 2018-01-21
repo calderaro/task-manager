@@ -4,17 +4,17 @@ import style from './style.css'
 import seo from './seo'
 import Layout from '../../components/Layout/'
 import TaskForm from '../../components/TaskForm/'
-import Task from '../../components/Task/'
+import Timer from '../../components/Timer/'
+import TaskList from '../../components/TaskList/'
 
 class Home extends React.Component {
   static seo = seo
   render = () => {
     return Layout(this.props,
       <div className={style.home}>
-        <TaskForm {...this.props} />
-        <div>
-          {this.props.tasks.list.map((task, i) => <Task key={i} {...{...this.props, task}} />)}
-        </div>
+        {this.props.general.modal === 'taskForm' ? <TaskForm {...this.props} /> : null}
+        <Timer {...this.props} />
+        <TaskList {...{...this.props, tasks: this.props.tasks}} />
       </div>
     )
   }

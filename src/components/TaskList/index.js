@@ -22,12 +22,13 @@ export default function TaskList (props) {
         }
         {props.tasks.list.map((task, i) => (
           <div
+            key={i}
             draggable
             onDragStart={e => props.dragTask(e, task)}
             onDragEnd={e => props.dragTask(e, null)}
             onDragOver={e => props.setDraggingOverTask(e, task)}
             onDrop={e => props.dropTask(e, task, i)}>
-            <Task key={i} {...{...props, task}} />
+            <Task {...{...props, task}} />
           </div>
         ))}
       </div>
