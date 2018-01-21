@@ -20,7 +20,7 @@ const enhancers = [
 export default function configureStore (init) {
   const initialState = {...loadState(), ...init}
   const store = createStore(rootReducer, initialState, compose(...enhancers.filter(e => e)))
-  store.subscribe(throttle(() => saveState({ date: new Date(), ...pick(store.getState(), ['']) }), 1000))
+  store.subscribe(throttle(() => saveState({ date: new Date(), ...pick(store.getState(), ['tasks']) }), 1000))
 
   if (module.hot) {
     module.hot.accept('../reducers', () =>

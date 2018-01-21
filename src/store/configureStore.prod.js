@@ -10,6 +10,6 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 export default function configureStore (h) {
   const initialState = {...loadState(), ...h}
   const store = createStoreWithMiddleware(rootReducer, initialState)
-  store.subscribe(throttle(() => saveState({ date: new Date(), ...pick(store.getState(), ['user']) }), 1000))
+  store.subscribe(throttle(() => saveState({ date: new Date(), ...pick(store.getState(), ['tasks']) }), 1000))
   return store
 }
