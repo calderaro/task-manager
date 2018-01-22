@@ -45,7 +45,7 @@ class Home extends React.Component {
     return Layout(this.props,
       <div className={style.home}>
         {this.props.general.modal === 'taskForm' ? <TaskForm {...this.props} /> : null}
-        <Timer {...{time: timeFormat(time / 1000), start, pause, stop, reset, interval: this.state.interval}} />
+        <Timer {...{time: timeFormat((time || 0) / 1000), start, pause, stop, reset, interval: this.state.interval}} />
         <TaskList {...{...this.props, setDone}} />
       </div>
     )
