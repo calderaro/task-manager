@@ -5,6 +5,10 @@ const initialState = {
   timeUnit: 'mins',
   dragging: null,
   draggingOver: null,
+  statusList: ['active', 'done', 'deleted'],
+  statusFilter: 'active',
+  durationList: ['all', 'short', 'medium', 'large'],
+  durationFilter: 'all',
   data: {
     id: '',
     duration: 1800000,
@@ -97,6 +101,40 @@ export default function auth (state = initialState, action) {
       return {
         ...state,
         list: [...arr.slice(0, action.index), action.task, ...arr.slice(action.index)]
+      }
+    case 'tasksTick':
+      const currentTask = state.list.find(e => e.status === 'active')
+      const list = currentTask
+        ? state.list.map(task =>
+          task.id === currentTask.id
+          ? task.time >= 1000
+            ? {...task, time: task.time - 1000}
+            : {...task, time: 0, status: 'done'}
+          : task)
+        : state.list
+      return {
+        ...state,
+        list
+      }
+    case 'taskSetDone':
+      return {
+        ...state,
+        list: state.list.map(t => t.id === action.id ? {...t, status: 'done'} : t)
+      }
+    case 'taskResetTime':
+      return {
+        ...state,
+        list: state.list.map(t => t.id === action.id ? {...t, time: t.duration} : t)
+      }
+    case 'tasksSetStatusFilter':
+      return {
+        ...state,
+        statusFilter: action.data
+      }
+    case 'tasksSetDurationFilter':
+      return {
+        ...state,
+        durationFilter: action.data
       }
     default:
       return state

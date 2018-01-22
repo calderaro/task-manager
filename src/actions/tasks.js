@@ -18,6 +18,9 @@ export const tasksInput = e => (dispatch, getState) => {
   return dispatch(tasksChange({[name]: value}))
 }
 
+export const tasksTick = data => ({type: 'tasksTick', data})
+export const taskSetDone = id => ({type: 'taskSetDone', id})
+export const taskResetTime = id => ({type: 'taskResetTime', id})
 export const tasksSelectTask = data => ({type: 'tasksSelectTask', data})
 export const tasksAdd = (id, createdAt) => ({type: 'tasksAdd', id, createdAt})
 export const tasksUpdate = updatedAt => ({type: 'tasksUpdate', updatedAt})
@@ -25,6 +28,8 @@ export const tasksDelete = data => ({type: 'tasksDelete', data})
 export const tasksSoftDelete = (task, deletedAt) => ({type: 'tasksSoftDelete', task, deletedAt})
 export const tasksSelectDuration = data => ({type: 'tasksSelectDuration', data})
 export const tasksSelectTimeUnit = data => ({type: 'tasksSelectTimeUnit', data})
+export const tasksSetStatusFilter = e => ({type: 'tasksSetStatusFilter', data: e.target.value})
+export const tasksSetDurationFilter = e => ({type: 'tasksSetDurationFilter', data: e.target.value})
 
 export const newTask = () => (dispatch, getState) => {
   // validaciones aqui
