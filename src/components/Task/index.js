@@ -32,11 +32,14 @@ export default function Task (props) {
           </button>
           : null
         }
-        <button
-          title='Editar Tarea'
-          className={style.editBtn} onClick={() => props.selectTask(props.task)}>
-          <i className='fa fa-edit' />
-        </button>
+        {status === 'active'
+          ? <button
+            title='Editar Tarea'
+            className={style.editBtn} onClick={() => props.selectTask(props.task)}>
+            <i className='fa fa-edit' />
+          </button>
+          : null
+        }
         <button
           title='Eliminar Tarea'
           className={style.deleteBtn} onClick={() => props.deleteTask(props.task)}>
