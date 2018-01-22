@@ -7,8 +7,14 @@ const initialState = {
   draggingOver: null,
   data: {
     id: '',
-    duration: '1800000',
-    title: ''
+    duration: 1800000,
+    time: 1800000,
+    title: '',
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: '',
+    finalizedAt: '',
+    status: 'active'
   },
   list: []
 }
@@ -24,13 +30,16 @@ export default function auth (state = initialState, action) {
       return {
         ...state,
         data: initialState.data,
-        list: [...state.list, {...state.data, id: action.id}]
+        list: [...state.list, {...state.data, id: action.id, time: state.data.duration}]
       }
     case 'tasksUpdate':
       return {
         ...state,
         data: initialState.data,
-        list: state.list.map(t => t.id === state.data.id ? state.data : t)
+        list: state.list.map(t =>
+          t.id === state.data.id
+          ? {...state.data, time: t.time >= state.data.duration ? state.data.duration : t.time}
+          : t)
       }
     case 'tasksDelete':
       return {
@@ -40,7 +49,10 @@ export default function auth (state = initialState, action) {
     case 'tasksSoftDelete':
       return {
         ...state,
-        list: state.list.map(t => t.id === action.data.id ? {...t, deleted: true} : t)
+        list: state.list.map(t =>
+          t.id === action.task.id
+          ? {...t, status: 'deleted', deletedAt: action.deletedAt}
+          : t)
       }
     case 'tasksSelectDuration':
       return {
