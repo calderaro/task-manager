@@ -38,6 +38,12 @@ export const updateTask = () => (dispatch, getState) => {
   dispatch(setModal(null))
 }
 
+export const deleteTask = task => (dispatch, getState) => {
+  // validaciones aqui
+  dispatch(tasksSoftDelete(task, new Date()))
+  dispatch(setModal(null))
+}
+
 export const selectTask = task => (dispatch, getState) => {
   dispatch(tasksSelectTask(task))
   dispatch(setModal('taskForm'))

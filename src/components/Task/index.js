@@ -26,7 +26,7 @@ export default function Task (props) {
         </button>
         <button
           title='Eliminar Tarea'
-          className={style.deleteBtn} onClick={() => props.tasksSoftDelete(props.task)}>
+          className={style.deleteBtn} onClick={() => props.deleteTask(props.task)}>
           <i className='fa fa-times' />
         </button>
       </div>

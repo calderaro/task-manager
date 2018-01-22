@@ -30,7 +30,15 @@ export default function auth (state = initialState, action) {
       return {
         ...state,
         data: initialState.data,
-        list: [...state.list, {...state.data, id: action.id, time: state.data.duration}]
+        list: [
+          ...state.list,
+          {
+            ...state.data,
+            id: action.id,
+            time: state.data.duration,
+            createdAt: action.createdAt
+          }
+        ]
       }
     case 'tasksUpdate':
       return {
@@ -38,7 +46,11 @@ export default function auth (state = initialState, action) {
         data: initialState.data,
         list: state.list.map(t =>
           t.id === state.data.id
-          ? {...state.data, time: t.time >= state.data.duration ? state.data.duration : t.time}
+          ? {
+            ...state.data,
+            time: t.time >= state.data.duration ? state.data.duration : t.time,
+            updatedAt: action.updatedAt
+          }
           : t)
       }
     case 'tasksDelete':
