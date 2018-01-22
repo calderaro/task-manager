@@ -4,7 +4,6 @@ import style from './style.css'
 export default function Task (props) {
   const {timeUnit, dragging, draggingOver} = props.tasks
   const {id, duration, status} = props.task
-  console.log(props.task);
   return (
     <div
       className={status === 'deleted' ? style.deletedTask : style.task}
