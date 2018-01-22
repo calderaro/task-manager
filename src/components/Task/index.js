@@ -2,11 +2,12 @@ import React from 'react'
 import style from './style.css'
 
 export default function Task (props) {
-  const {defaultDurations, timeUnits, timeUnit, dragging, draggingOver} = props.tasks
-  const {id, duration, deleted} = props.task
+  const {timeUnit, dragging, draggingOver} = props.tasks
+  const {id, duration, status} = props.task
+  console.log(props.task);
   return (
     <div
-      className={deleted ? style.deletedTask : style.task}
+      className={status === 'deleted' ? style.deletedTask : style.task}
       style={{
         background: dragging && dragging.id === id ? '#fafafa' : '#FFF',
         borderTop: draggingOver && draggingOver.id === id ? '1px solid #999' : ''
