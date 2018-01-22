@@ -19,22 +19,22 @@ export const tasksInput = e => (dispatch, getState) => {
 }
 
 export const tasksSelectTask = data => ({type: 'tasksSelectTask', data})
-export const tasksAdd = (id, createdAt) => ({type: 'tasksAdd', id})
-export const tasksUpdate = () => ({type: 'tasksUpdate'})
+export const tasksAdd = (id, createdAt) => ({type: 'tasksAdd', id, createdAt})
+export const tasksUpdate = updatedAt => ({type: 'tasksUpdate', updatedAt})
 export const tasksDelete = data => ({type: 'tasksDelete', data})
-export const tasksSoftDelete = data => ({type: 'tasksSoftDelete', data})
+export const tasksSoftDelete = (task, deletedAt) => ({type: 'tasksSoftDelete', task, deletedAt})
 export const tasksSelectDuration = data => ({type: 'tasksSelectDuration', data})
 export const tasksSelectTimeUnit = data => ({type: 'tasksSelectTimeUnit', data})
 
 export const newTask = () => (dispatch, getState) => {
   // validaciones aqui
-  dispatch(tasksAdd(shortid.generate()))
+  dispatch(tasksAdd(shortid.generate(), new Date()))
   dispatch(setModal(null))
 }
 
 export const updateTask = () => (dispatch, getState) => {
   // validaciones aqui
-  dispatch(tasksUpdate())
+  dispatch(tasksUpdate(new Date()))
   dispatch(setModal(null))
 }
 
