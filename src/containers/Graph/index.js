@@ -5,8 +5,6 @@ import Layout from '../../components/Layout/'
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label} from 'recharts'
 import moment from 'moment'
 
-window.moment = moment
-
 class Graph extends React.Component {
   state = {currentWeek: 0, lastWeek: 0}
   componentDidMount = () => {

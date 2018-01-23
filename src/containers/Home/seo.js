@@ -1,11 +1,14 @@
 
 export default {
-  title: 'Inbatk',
-  description: `Inbatk description`,
-  ogtitle: 'Inbatk',
-  ogdescription: `Inbatk description`,
+  title: 'Task Manger',
+  description: `Pomodor based task manager for productivity`,
+  ogtitle: 'Task Manger',
+  ogdescription: `Pomodor based task manager for productivity`,
+  ogimage: '/static/img/seoimg.png',
   keywords: [
-    'Inbatk',
-    'Inbatk web'
+    'task manager',
+    'pomodor',
+    'productivity',
+    'timer'
   ]
 }
