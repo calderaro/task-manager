@@ -1,0 +1,22 @@
+.graphContainer {
+  min-height: 100vh;
+  padding: 5em 0;
+  background: #2ECCFA;
+  h2 {
+    color: #FAFAFA;
+    font-size: 2em;
+  }
+}
+
+.countGraph {
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  & > div {
+    background: #FFF;
+    padding: 2em 1em 1em 1em;
+  }
+}
