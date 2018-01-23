@@ -23,6 +23,7 @@
     padding: .3em 4em;
     background: none;
     border: 1px solid #FFF;
+    margin: 0 .1em;
     border-radius: .2em;
     cursor: pointer;
   }
