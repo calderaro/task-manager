@@ -12,23 +12,27 @@ export default function Timer (props) {
           ? <button
             title='Pausar contador de tiempo'
             onClick={props.pause}>
-              Pausar
+              <i className='fa fa-pause' />
+              <span> Pausar</span>
           </button>
           : <button
             title='Iniciar contador de tiempo'
             onClick={props.start}>
-                INICIAR
+                <i className='fa fa-play' />
+                <span> INICIAR</span>
             </button>
         }
         <button
           title='Detener contador de tiempo'
           onClick={props.stop}>
-            Detener
+            <i className='fa fa-stop' />
+            <span> Detener</span>
         </button>
         <button
           title='Reiniciar contador de tiempo'
           onClick={props.reset}>
-            Reiniciar
+            <i className='fa fa-repeat' />
+            <span> Reiniciar</span>
         </button>
       </div>
     </div>

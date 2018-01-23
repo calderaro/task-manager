@@ -20,11 +20,11 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0 1em;
-    width: 100%;
+    min-width: 180px;
 
     a, button {
       font-size: 1.4em;
-      padding: 1em;
+      padding: 1em 0;
       display: block;
       color: #FFF;
       text-decoration: none;
@@ -40,7 +40,7 @@
       height: 1.8vw;
     }
     a, button {
-      padding: 1em;
+      padding: .5em .3em;
       font-size: 1.4em;
       display: block;
       color: #FFF;

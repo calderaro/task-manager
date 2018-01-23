@@ -11,9 +11,14 @@ const Navbar = (props) => {
           <Link to='/'>TASK MANAGER</Link>
         </div>
         <div>
-          <Link to='/'>Home</Link>
-          <Link to='/estadisticas'>Estadísticas</Link>
-          <Link to='/login'>Registro / Login</Link>
+          <Link to='/'><i className='fa fa-home' /></Link>
+          <Link to='/estadisticas'><i className='fa fa-bar-chart' /></Link>
+          <a href='https://github.com/calderaro/task-manager' target='_blank'>
+            <i className='fa fa-github' />
+          </a>
+          <a href='https://www.facebook.com/sharer/sharer.php?u=http%3A//104.236.31.209%3A3012/' target='_blank'>
+            <i className='fa fa-share-alt' />
+          </a>
         </div>
       </nav>
     </header>
