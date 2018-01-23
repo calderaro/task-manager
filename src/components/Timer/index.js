@@ -19,7 +19,7 @@ export default function Timer (props) {
             title='Iniciar contador de tiempo'
             onClick={props.start}>
                 <i className='fa fa-play' />
-                <span> INICIAR</span>
+                <span> Iniciar</span>
             </button>
         }
         <button
