@@ -7,32 +7,30 @@ export default function Timer (props) {
       <div className={style.time}>
         {props.time}
       </div>
-      {props.interval
-        ? <div className={style.buttons}>
-          <button
+      <div className={style.buttons}>
+        {props.interval
+          ? <button
             title='Pausar contador de tiempo'
             onClick={props.pause}>
               Pausar
           </button>
-          <button
-            title='Detener contador de tiempo'
-            onClick={props.stop}>
-              Detener
-          </button>
-          <button
-            title='Reiniciar contador de tiempo'
-            onClick={props.reset}>
-              Reiniciar
-          </button>
-        </div>
-        : <div className={style.buttons}>
-          <button
+          : <button
             title='Iniciar contador de tiempo'
             onClick={props.start}>
-              INICIAR
-          </button>
-        </div>
-      }
+                INICIAR
+            </button>
+        }
+        <button
+          title='Detener contador de tiempo'
+          onClick={props.stop}>
+            Detener
+        </button>
+        <button
+          title='Reiniciar contador de tiempo'
+          onClick={props.reset}>
+            Reiniciar
+        </button>
+      </div>
     </div>
   )
 }
