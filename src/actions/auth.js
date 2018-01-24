@@ -1,4 +1,6 @@
 import {FBAuth} from '../helpers/services'
+import {tasksReset} from './tasks'
+import window from 'global/window'
 
 export const authChange = data => ({type: 'authChange', data})
 export const authAttempt = () => ({type: 'authAttempt'})
@@ -24,3 +26,9 @@ export const setUser = user => (dispatch, getState) =>
   .then(token => dispatch({type: 'authSetUser', user: {email: user.email, token}}))
 
 export const removeUser = () => ({type: 'authRemoveUser'})
+
+export const logout = () => (dispatch, getState) => {
+  window.firebase.auth().signOut()
+  dispatch(removeUser())
+  dispatch(tasksReset())
+}

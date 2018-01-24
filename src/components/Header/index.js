@@ -21,7 +21,7 @@ const Navbar = (props) => {
             <i className='fa fa-share-alt' />
           </a>
           {props.auth.user.email
-            ? <a onClick={() => window.firebase ? window.firebase.auth().signOut() : null} title='Salir' className={style.signOutBtn}>
+            ? <a onClick={props.logout} title='Salir' className={style.signOutBtn}>
               <i className='fa fa-sign-out' /> <span>{props.auth.user.email}</span>
             </a>
             : <a onClick={props.login} title='Entrar'>

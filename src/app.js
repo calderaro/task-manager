@@ -6,15 +6,14 @@ import window from 'global/window'
 import debounce from 'lodash/debounce'
 import configureStore from './store/configureStore'
 import Root from './containers/Root/'
-import {setUser, removeUser} from './actions/auth'
-import {tasksLoad, tasksReset} from './actions/tasks'
+import {setUser} from './actions/auth'
+import {tasksLoad} from './actions/tasks'
 import uniqBy from 'lodash/uniqBy'
 
 injectTapEventPlugin()
 
 if (process.env.NODE_ENV === 'development') console.log(process.env.api)
 
-const firebase = window.firebase
 const store = configureStore(window.initialState)
 const resize = debounce(() => store.dispatch({type: 'setDimensions', h: window.innerHeight, w: window.innerWidth}), 100)
 window.addEventListener('resize', resize)
@@ -32,21 +31,22 @@ firebase.initializeApp({
 const renderApp = Component =>
   render(<AppContainer><Component store={store} /></AppContainer>, document.getElementById('root'))
 
+let desub = null
 window.firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    const userId = firebase.auth().currentUser.uid
     store.dispatch(setUser(user))
-    var userId = firebase.auth().currentUser.uid
     firebase.database().ref('/items/' + userId).once('value').then((snapshot) => {
+      desub = store.subscribe(debounce(() => {
+        const list = store.getState().tasks.list.filter(t => t.status !== 'deleted')
+        firebase.database().ref('/items/' + userId).set(list)
+      }, 1000, {'leading': true, 'trailing': true}))
+
       const list = uniqBy([...(snapshot.val() || []), ...store.getState().tasks.list], 'id')
       store.dispatch(tasksLoad(list))
     })
-    store.subscribe(debounce(() => {
-      firebase.database().ref('items/' + userId)
-      .set(store.getState().tasks.list.filter(t => t.status !== 'deleted'))
-    }, 1000, {'leading': true, 'trailing': false}))
   } else {
-    store.dispatch(removeUser())
-    store.dispatch(tasksReset())
+    if (desub) desub()
   }
 
   if (process.env.NODE_ENV === 'production') {
