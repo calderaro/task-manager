@@ -38,6 +38,7 @@ class Home extends React.Component {
     const nextTask = next.tasks.list.find(e => e.status === 'active')
     if (!nextTask || !currentTask || nextTask.id !== currentTask.id) return this.pause()
   }
+  openInport = () => this.refs.import.click()
   render = () => {
     const {start, pause, stop, reset, setDone} = this
     const task = filterTasks(this.props.tasks).find(e => e.status === 'active')
@@ -47,6 +48,23 @@ class Home extends React.Component {
         {this.props.general.modal === 'taskForm' ? <TaskForm {...this.props} /> : null}
         <Timer {...{time: timeFormat((time || 0) / 1000), start, pause, stop, reset, interval: this.state.interval}} />
         <TaskList {...{...this.props, setDone}} />
+        <input type='file' ref='import' onChange={this.props.tasksImport} style={{display: 'none'}} />
+        <button className={style.importBtn} onClick={this.openInport}>Importar</button>
+        <div className={style.importHelp}>
+          <h4>Ejemplo CSV:</h4>
+          <p>Orden: id, duration, time, title, createdAt, updatedAt, deletedAt, finalizedAt, status</p>
+          <ul>
+            <li>id: identificador único.</li>
+            <li>duration: la duración máxima de la tarea.</li>
+            <li>time: el tiempo que tomó completar la tarea.</li>
+            <li>title: texto descriptivo.</li>
+            <li>createdAt: fecha de creación.</li>
+            <li>updatedAt: fecha de actualización.</li>
+            <li>deletedAt: fecha de eliminación.</li>
+            <li>finalizedAt: fecha de finalización.</li>
+            <li>status: estatus de la tarea active, done, deleted.</li>
+          </ul>
+        </div>
       </div>
     )
   }

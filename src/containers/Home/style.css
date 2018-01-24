@@ -1,5 +1,31 @@
 .home {
   min-height: 100vh;
-  padding: 5em 0 0 0;
+  padding: 5em 0 2em 0;
   background: #2ECCFA;
+}
+
+
+.importBtn {
+  color: #FFF;
+  font-size: 1.5em;
+  padding: .3em 2em;
+  background: none;
+  border: 1px solid #FFF;
+  margin: 1em auto;
+  border-radius: .2em;
+  cursor: pointer;
+  display: block !important;
+}
+
+.importHelp {
+  padding: 1em;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h4 {
+    margin: 0;
+  }
 }

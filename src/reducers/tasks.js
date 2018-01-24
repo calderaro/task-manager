@@ -136,6 +136,11 @@ export default function auth (state = initialState, action) {
         ...state,
         durationFilter: action.data
       }
+    case 'tasksImport':
+      return {
+        ...state,
+        list: [...state.list, ...action.data]
+      }
     default:
       return state
   }

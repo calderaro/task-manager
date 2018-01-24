@@ -1,5 +1,6 @@
 import shortid from 'shortid'
 import {setModal} from './general'
+import papa from 'papaparse'
 
 export const tasksChange = data => ({type: 'tasksChange', data})
 export const tasksInput = e => (dispatch, getState) => {
@@ -71,4 +72,17 @@ export const dropTask = (e, task, index) => (dispatch, getState) => {
   const {dragging, draggingOver} = getState().tasks
   if (dragging && draggingOver && dragging.id === draggingOver.id) return
   dispatch({type: 'tasksReorder', task: dragging, index})
+}
+
+export const tasksImport = (e) => (dispatch, getState) => {
+  const reader = new FileReader()
+  reader.readAsText(e.target.files[0])
+  reader.onload = function (event) {
+    var csvData = event.target.result
+    var result = papa.parse(csvData, {header: true})
+    dispatch({type: 'tasksImport', data: result.data})
+  }
+	reader.onerror = function () {
+		alert('Unable to read ' + file.fileName);
+	};
 }
