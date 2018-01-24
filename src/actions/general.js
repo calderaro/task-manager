@@ -9,4 +9,3 @@ export const setModal = (data) => (dispatch, getState) => {
 }
 export const closeAll = () => ({ type: 'closeAll' })
 export const setDimensions = () => ({ type: 'setDimensions', h: window.innerHeight, w: window.innerWidth })
-export const closeVideo = data => ({type: 'closeVideo', data})

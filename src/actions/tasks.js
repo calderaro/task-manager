@@ -2,6 +2,7 @@ import shortid from 'shortid'
 import {setModal} from './general'
 import papa from 'papaparse'
 
+export const tasksReset = data => ({type: 'tasksReset', data})
 export const tasksChange = data => ({type: 'tasksChange', data})
 export const tasksInput = e => (dispatch, getState) => {
   const {timeUnit} = getState().tasks
@@ -82,7 +83,9 @@ export const tasksImport = (e) => (dispatch, getState) => {
     var result = papa.parse(csvData, {header: true})
     dispatch({type: 'tasksImport', data: result.data})
   }
-	reader.onerror = function () {
-		alert('Unable to read ' + file.fileName);
-	};
+  reader.onerror = function () {
+    alert('Unable to read ' + e.target.files[0].fileName)
+  }
 }
+
+export const tasksLoad = (data = []) => ({type: 'tasksLoad', data})

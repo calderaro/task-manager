@@ -25,6 +25,8 @@ const initialState = {
 
 export default function auth (state = initialState, action) {
   switch (action.type) {
+    case 'tasksReset':
+      return initialState
     case 'tasksChange':
       return {
         ...state,
@@ -140,6 +142,11 @@ export default function auth (state = initialState, action) {
       return {
         ...state,
         list: [...state.list, ...action.data]
+      }
+    case 'tasksLoad':
+      return {
+        ...state,
+        list: action.data
       }
     default:
       return state

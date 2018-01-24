@@ -6,12 +6,15 @@ import window from 'global/window'
 import debounce from 'lodash/debounce'
 import configureStore from './store/configureStore'
 import Root from './containers/Root/'
-import {relogin} from './actions/auth'
+import {setUser, removeUser} from './actions/auth'
+import {tasksLoad, tasksReset} from './actions/tasks'
+import uniqBy from 'lodash/uniqBy'
 
 injectTapEventPlugin()
 
 if (process.env.NODE_ENV === 'development') console.log(process.env.api)
 
+const firebase = window.firebase
 const store = configureStore(window.initialState)
 const resize = debounce(() => store.dispatch({type: 'setDimensions', h: window.innerHeight, w: window.innerWidth}), 100)
 window.addEventListener('resize', resize)
@@ -30,7 +33,22 @@ const renderApp = Component =>
   render(<AppContainer><Component store={store} /></AppContainer>, document.getElementById('root'))
 
 window.firebase.auth().onAuthStateChanged(user => {
-  if (user) store.dispatch(relogin(user.pa))
+  if (user) {
+    store.dispatch(setUser(user))
+    var userId = firebase.auth().currentUser.uid
+    firebase.database().ref('/items/' + userId).once('value').then((snapshot) => {
+      const list = uniqBy([...(snapshot.val() || []), ...store.getState().tasks.list], 'id')
+      store.dispatch(tasksLoad(list))
+    })
+    store.subscribe(debounce(() => {
+      firebase.database().ref('items/' + userId)
+      .set(store.getState().tasks.list.filter(t => t.status !== 'deleted'))
+    }, 1000, {'leading': true, 'trailing': false}))
+  } else {
+    store.dispatch(removeUser())
+    store.dispatch(tasksReset())
+  }
+
   if (process.env.NODE_ENV === 'production') {
     const routes = require('./containers/Root/SyncRoutes')
     const splitPoints = window.splitPoints || []

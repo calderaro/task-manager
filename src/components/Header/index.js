@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import style from './style.css'
+import window from 'global/window'
 
 const Navbar = (props) => {
   const navOut = props.navOut === undefined ? true : props.navOut
@@ -19,9 +20,14 @@ const Navbar = (props) => {
           <a href='https://www.facebook.com/sharer/sharer.php?u=http%3A//104.236.31.209%3A3012/' target='_blank'>
             <i className='fa fa-share-alt' />
           </a>
-          <a onClick={props.login}>
-            <i className='fa fa-sign-in' />
-          </a>
+          {props.auth.user.email
+            ? <a onClick={() => window.firebase ? window.firebase.auth().signOut() : null} title='Salir' className={style.signOutBtn}>
+              <i className='fa fa-sign-out' /> <span>{props.auth.user.email}</span>
+            </a>
+            : <a onClick={props.login} title='Entrar'>
+              <i className='fa fa-sign-in' />
+            </a>
+          }
         </div>
       </nav>
     </header>

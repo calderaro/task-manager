@@ -51,3 +51,14 @@
     text-decoration: none;
   }
 }
+
+.signOutBtn {
+  span {
+    color: #FFF !important;
+  }
+  @media (max-width: 900px) {
+    span {
+      display: none;
+    }
+  }
+}
