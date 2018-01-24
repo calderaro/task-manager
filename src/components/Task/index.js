@@ -12,6 +12,7 @@ export default function Task (props) {
   }
   return (
     <div
+      title='Arrastra las tareas para reordenar'
       className={status === statusFilter && durationFilters[durationFilter](duration) ? style.task : style.deletedTask}
       style={{
         background: dragging && dragging.id === id ? '#fafafa' : '#FFF',
