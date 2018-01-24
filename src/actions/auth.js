@@ -29,6 +29,7 @@ export const removeUser = () => ({type: 'authRemoveUser'})
 
 export const logout = () => (dispatch, getState) => {
   window.firebase.auth().signOut()
+  if (window.desub) window.desub()
   dispatch(removeUser())
   dispatch(tasksReset())
 }

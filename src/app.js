@@ -31,13 +31,12 @@ firebase.initializeApp({
 const renderApp = Component =>
   render(<AppContainer><Component store={store} /></AppContainer>, document.getElementById('root'))
 
-let desub = null
 window.firebase.auth().onAuthStateChanged(user => {
   if (user) {
     const userId = firebase.auth().currentUser.uid
     store.dispatch(setUser(user))
     firebase.database().ref('/items/' + userId).once('value').then((snapshot) => {
-      desub = store.subscribe(debounce(() => {
+      window.desub = store.subscribe(debounce(() => {
         const list = store.getState().tasks.list.filter(t => t.status !== 'deleted')
         firebase.database().ref('/items/' + userId).set(list)
       }, 1000, {'leading': true, 'trailing': true}))
@@ -45,8 +44,6 @@ window.firebase.auth().onAuthStateChanged(user => {
       const list = uniqBy([...(snapshot.val() || []), ...store.getState().tasks.list], 'id')
       store.dispatch(tasksLoad(list))
     })
-  } else {
-    if (desub) desub()
   }
 
   if (process.env.NODE_ENV === 'production') {
