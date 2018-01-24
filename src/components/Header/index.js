@@ -19,6 +19,9 @@ const Navbar = (props) => {
           <a href='https://www.facebook.com/sharer/sharer.php?u=http%3A//104.236.31.209%3A3012/' target='_blank'>
             <i className='fa fa-share-alt' />
           </a>
+          <a onClick={props.login}>
+            <i className='fa fa-sign-in' />
+          </a>
         </div>
       </nav>
     </header>
